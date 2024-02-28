@@ -17,11 +17,13 @@ export default function Home() {
     return pageNumbers;
   };
 
-  return (
-    <div className="flex  h-screen  bg-blanc-casse">
-
-      <SideBar/>
-      <EditNote/>
-    </div>
+  return (<>
+            <div className=" h-screen bg-blanc-casse flex gap-2">
+              <SideBar/>
+              
+              <EditNote />
+            </div>
+            </>
+    
   );
 }
