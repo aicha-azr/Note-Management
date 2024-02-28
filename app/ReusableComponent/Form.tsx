@@ -13,10 +13,10 @@ interface CardProps {
 const Form: React.FC<CardProps> = ({ className, children, ...rest }) =>{
     return(
         <>
-        <form className={cn(className, "flex flex-col items-stretch shadow-md rounded-sm p-2 bg-pastell-blue text-blan gap-[2rem] w-[100%]")} {...rest}>
-        <Title/>
+        <form className={cn(className, "flex flex-col items-stretch shadow-md rounded-sm p-2 bg-[#181818] text-white gap-[2rem] w-[100%]")} {...rest}>
+        <Title placeholder='Enter a title'/>
         <hr></hr>
-        <Description/>
+        <Description placeholder='Enter a description'/>
         <Button className='self-end'>Save</Button>
         
         </form>
