@@ -1,16 +1,14 @@
-"use client"
-import React, { Children } from 'react';
+import React, { TextareaHTMLAttributes } from 'react';
 import { cn } from './cn/Cn';
-import { ReactNode } from 'react';
 
-interface CardProps {
+interface CardProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
-  children?: ReactNode;
 }
 
-const Description: React.FC<CardProps> = ({ className, children, ...rest }) =>{
+const Description: React.FC<CardProps> = ({ className, children, ...rest }) => {
     return(        
-        <textarea className={cn(className, 'text-white p-3 bg-[#181818] border-none h-[10%] max-h-fit')} {...rest}/>          
+        <textarea className={cn(className, 'text-white p-3 bg-[#181818] border-none max-h-[100%] h-fit w-full')} {...rest}/>          
     )
 }
+
 export default Description;
