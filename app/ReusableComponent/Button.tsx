@@ -11,7 +11,7 @@ interface CardProps {
 const Button: React.FC<CardProps> = ({ className, children, ...rest }) =>{
     return(        
         
-        <button className={cn(className,'bg-[#312eb5] p-2 shadow-md rounded-sm' )} {...rest}>{children}</button>
+        <button className={cn(className,'bg-gold p-4 shadow-md rounded-sm' )} {...rest}>{children}</button>
                
     )
 }
