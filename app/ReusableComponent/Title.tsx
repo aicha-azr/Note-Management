@@ -7,7 +7,7 @@ interface CardProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Title: React.FC<CardProps> = ({ className, children, ...rest }) => {
     return(        
-        <input className={cn(className, 'text-white p-2 text-2xl bg-[#181818] border-none')} {...rest}/>          
+        <input className={cn(className, 'text-black p-2 text-1xl bg-blanc-casse border-none')} {...rest}/>          
     )
 }
 
