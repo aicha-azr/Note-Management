@@ -13,7 +13,7 @@ interface CardProps {
 const Form: React.FC<CardProps> = ({ className, children, ...rest }) =>{
     return(
         <>
-        <form className={cn(className, "flex flex-col items-stretch shadow-md rounded-sm p-2 bg-[#181818] text-white gap-[2rem] max-w-[550px]")} {...rest}>
+        <form className={cn(className, "flex flex-col items-stretch shadow-md rounded-sm p-2 bg-pastell-blue text-blan gap-[2rem] max-w-[550px]")} {...rest}>
         <Title/>
         <hr></hr>
         <Description/>
