@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-interface Notes {
+export interface Notes {
   title: string,
   description: string
 }
@@ -12,4 +12,4 @@ const NotesSchema = new mongoose.Schema<Notes>({
 
 const NotesModel = mongoose.models.Notes || mongoose.model("Notes", NotesSchema);
 
-export default NotesModel
+export default NotesModel  
