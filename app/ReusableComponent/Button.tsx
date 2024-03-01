@@ -1,9 +1,9 @@
 "use client"
-import React, { Children } from 'react';
+import React, { ButtonHTMLAttributes, Children } from 'react';
 import { cn } from './cn/Cn';
 import { ReactNode } from 'react';
 
-interface CardProps {
+interface CardProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   className?: string;
   children: ReactNode;
 }

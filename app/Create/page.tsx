@@ -1,8 +1,10 @@
+"use client"
 import Card from "../ReusableComponent/Card";
 import Form from "../ReusableComponent/Form";
 import SideBar from "../ReusableComponent/sidebar";
 
 export default function CreateNote(){
+
     return(<>
     <div className="h-screen flex bg-blanc-casse">
         <SideBar/>

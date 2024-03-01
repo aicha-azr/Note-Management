@@ -3,6 +3,8 @@ import Image from 'next/image'
 import logo from '../assets/noted-logo.webp'
 import logoicon from '../assets/favicon.webp'
 import { BiPlusCircle } from "react-icons/bi";
+import Link from "next/link";
+import CreateNote from "../Create/page";
 
 const SideBar: React.FC = () => {
     return (
@@ -14,7 +16,9 @@ const SideBar: React.FC = () => {
                 </div>
                 <nav className="flex flex-col gap-y-4 pt-10">
                     <a href="#" className="group text-2xl rounded-xl text-burgendy hover:bg-blanc-casse">
+                        <Link href="/Create">
                         <BiPlusCircle/>
+                        </Link>
                         <div className="absolute inset-y-0 left-12 hidden items-center group-hover:flex">
                             <div className="relative whitespace-nowrap rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-900 drop-shadow-lg">
                                 <div className="absolute inset-0 -left-1 flex items-center">
