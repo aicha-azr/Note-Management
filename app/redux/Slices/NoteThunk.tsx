@@ -30,4 +30,17 @@ export const fetchAllNotes = createAsyncThunk(
         }
     }
   );
+  type dataId = string;
+  export const getNote = createAsyncThunk(
+    'notes/addNote',
+    async(id:dataId, {rejectWithValue}) =>{
+        try{
+            const response = await axios.get(`http://localhost:3000/api/notes/${id}`);
+            console.log(response);
+            return response.data;
+        }catch(e){
+            return rejectWithValue('Failed to get the note')
+        }
+    }
+  );
   

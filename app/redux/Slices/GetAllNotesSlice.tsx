@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {fetchAllNotes, addNote}  from '@/app/redux/Slices/NoteThunk';
+import {fetchAllNotes, addNote, getNote}  from '@/app/redux/Slices/NoteThunk';
 
 // Define initial state
 interface Note {
@@ -20,12 +20,12 @@ const initialState: NotesState = {
   error: null,
 };
 
-// Create slice
+
 const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
-    // Additional reducers can be defined here if needed
+
   },
   extraReducers: (builder) => {
     builder
@@ -47,9 +47,21 @@ const notesSlice = createSlice({
       })
       .addCase(addNote.fulfilled, (state, action) => {
         state.loading = false;
-        state.data.push(action.payload); // Append the new note to the existing array
+        state.data.push(action.payload); 
       })
       .addCase(addNote.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(getNote.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getNote.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data=action.payload; 
+      })
+      .addCase(getNote.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
