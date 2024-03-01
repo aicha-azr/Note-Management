@@ -1,3 +1,4 @@
+"use client"
 import { FaPlus, FaUser, FaUserEdit } from "react-icons/fa";
 import Image from 'next/image'
 import logo from '../assets/noted-logo.webp'
@@ -15,7 +16,7 @@ const SideBar: React.FC = () => {
                     <Image  src={logoicon} width={500} height={500} alt="Picture of the author"/>
                 </div>
                 <nav className="flex flex-col gap-y-4 pt-10">
-                    <a href="#" className="group text-2xl rounded-xl text-burgendy hover:bg-blanc-casse">
+                    <div className="group text-2xl rounded-xl text-burgendy hover:bg-blanc-casse">
                         <Link href="/Create">
                         <BiPlusCircle/>
                         </Link>
@@ -26,7 +27,7 @@ const SideBar: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </nav>
             </div>
 
