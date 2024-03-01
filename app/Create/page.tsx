@@ -5,8 +5,8 @@ import SideBar from "../ReusableComponent/sidebar";
 import { useDispatch,useSelector } from "react-redux";
 import { AppDispatch } from "@/app/redux/Store/store";
 import { useEffect } from "react";
-import { fetchAllNotes } from "../redux/Slices/NoteThunk";
-import { title } from "process";
+import { fetchAllNotes, getNote } from "../redux/Slices/NoteThunk";
+
 
 
 
@@ -20,6 +20,9 @@ export default function CreateNote(){
 
       const { data} = useSelector((state: any) => state.notes);
 
+      function handleget(key: string){
+        dispatch(getNote(key))
+      }
     return(<>
     <div className="h-screen flex bg-blanc-casse">
         <SideBar/>
@@ -36,6 +39,7 @@ export default function CreateNote(){
                             body={item.description}
                             createdAt={item.createdAt}
                             className="min-h-[10rem]"
+                            onClick={()=>handleget(item._id)}
                         ></Card>
                     ))
                 )
