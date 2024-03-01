@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {fetchAllNotes, addNote, getNote}  from '@/app/redux/Slices/NoteThunk';
 
-// Define initial state
 interface Note {
   _id: string;
   title: string;
@@ -48,6 +47,7 @@ const notesSlice = createSlice({
       .addCase(addNote.fulfilled, (state, action) => {
         state.loading = false;
         state.data.push(action.payload); 
+        state.data.push(action.payload);
       })
       .addCase(addNote.rejected, (state, action) => {
         state.loading = false;
@@ -68,5 +68,4 @@ const notesSlice = createSlice({
   },
 });
 
-// Export individual action creators and reducer
 export const { reducer: notesReducer, actions: notesActions } = notesSlice;

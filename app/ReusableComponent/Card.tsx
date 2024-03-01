@@ -16,10 +16,10 @@ const Card: React.FC<CardProps> = ({ className,body,createdAt,title, ...rest }) 
         // {children}
         // </div>
         // </>
-        <div className={cn(className,"max-w-md w-full mx-auto bg-pastell-blue rounded-md overflow-hidden shadow-lg p-3")}>
+        <div className={cn(className," max-w-md w-full mx-auto bg-pastell-blue rounded-md overflow-hidden shadow p-3")}>
           <div className="p-2">
             <h2 className="text-xl text-blanc-casse font-semibold mb-2">{title}</h2>
-            <p className="text-blanc-casse mb-4">{body}</p>
+            <p className="text-blanc-casse text-sm mb-4">{body}</p>
             <p className="text-sm text-blanc-casse">{createdAt}</p>
           </div>
         </div>
