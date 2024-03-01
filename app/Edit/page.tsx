@@ -1,12 +1,12 @@
 "use client"
-import Card from "../ReusableComponent/Card";
-import Form from "../ReusableComponent/Form";
-import SideBar from "../ReusableComponent/sidebar";
 import { useDispatch,useSelector } from "react-redux";
 import { AppDispatch } from "@/app/redux/Store/store";
 import { useEffect } from "react";
-import { fetchAllNotes } from "../redux/Slices/NoteThunk";
 import { title } from "process";
+import EditNote from "@/app/ReusableComponent/editNote";
+import { fetchAllNotes } from "@/app/redux/Slices/NoteThunk";
+import SideBar from "@/app/ReusableComponent/sidebar";
+import Card from "@/app/ReusableComponent/Card";
 
 
 
@@ -43,7 +43,7 @@ export default function CreateNote(){
             
         </div>
         
-        <Form className="w-full m-8"/>
+        <EditNote className="w-full m-8"/>
         </div>
     </div>
     </>)

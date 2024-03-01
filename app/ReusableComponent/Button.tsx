@@ -11,7 +11,7 @@ interface CardProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 const Button: React.FC<CardProps> = ({ className, children, ...rest }) =>{
     return(        
         
-        <button className={cn(className,'bg-gold p-4 shadow-md rounded-sm' )} {...rest}>{children}</button>
+        <button className={cn(className,'bg-gold p-4 shadow-md text-burgendy  font-bold rounded-sm' )} {...rest}>{children}</button>
                
     )
 }

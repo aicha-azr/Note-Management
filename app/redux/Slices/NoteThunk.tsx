@@ -30,4 +30,17 @@ export const fetchAllNotes = createAsyncThunk(
         }
     }
   );
+  //edit note thunk
+  export const editNote = createAsyncThunk(
+    'notes/editNote',
+    async(noteData: NoteData, {rejectWithValue}) =>{
+        try{
+            const response = await axios.put('http://localhost:3000/api/notes', noteData);
+            console.log(response);
+            return response.data;
+        }catch(e){
+            return rejectWithValue('Failed to add the note')
+        }
+    }
+  );
   
