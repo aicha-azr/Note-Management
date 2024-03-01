@@ -21,7 +21,7 @@ export default function Home() {
       <div className="h-screen bg-blanc-casse flex gap-2">
         <SideBar />
         <div className="grid flex-col ">
-          <div className="bg-blanc-casse text-burgendy p-6 grid grid-cols-3 gap-2 h-fit justify-end mx-5">
+          <div className="bg-blanc-casse text-burgendy grid grid-cols-3 gap-2 h-fit justify-end mx-5">
             { !data? (
               <div>No notes available</div>
             ) : (
