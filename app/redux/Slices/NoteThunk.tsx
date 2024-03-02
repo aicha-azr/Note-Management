@@ -30,27 +30,27 @@ export const fetchAllNotes = createAsyncThunk(
         }
     }
   );
-  //edit note thunk
+  
+  type dataId = string;
   export const editNote = createAsyncThunk(
     'notes/editNote',
-    async(noteData: NoteData, {rejectWithValue}) =>{
+    async({ noteData, id }: { noteData: NoteData, id: string }, {rejectWithValue}) =>{
         try{
-            const response = await axios.put('http://localhost:3000/api/notes', noteData);
+            const response = await axios.put(`http://localhost:3000/api/notes/${id}`, noteData);
             console.log(response);
             return response.data;
         }catch(e){
-            return rejectWithValue('Failed to add the note')
+            return rejectWithValue('Failed to update the note')
         }
     }
   );
-  type dataId = string;
   export const getNote = createAsyncThunk(
-    'notes/addNote',
+    'notes/getoneNote',
     async(id:dataId, {rejectWithValue}) =>{
         try{
             const response = await axios.get(`http://localhost:3000/api/notes/${id}`);
             console.log(response);
-            return response.data;
+            return response.data.note;
         }catch(e){
             return rejectWithValue('Failed to get the note')
         }

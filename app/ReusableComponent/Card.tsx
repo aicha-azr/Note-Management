@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children, ReactNode } from 'react';
 import { cn } from './cn/Cn';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
@@ -6,11 +6,12 @@ interface CardProps {
   className?: string;
   title: string;
   body: string;
+  children?: ReactNode;
   createdAt: string;
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-const Card: React.FC<CardProps> = ({ className, body, createdAt, title, onClick }) => {
+const Card: React.FC<CardProps> = ({ className, body, createdAt, title, onClick, children }) => {
   return (
     <div onClick={onClick} className={cn(className, "max-w-md w-full mx-auto bg-pastell-blue rounded-md overflow-hidden shadow p-3")}>
       <div className="p-2">
@@ -21,6 +22,7 @@ const Card: React.FC<CardProps> = ({ className, body, createdAt, title, onClick 
         <button >
             <RiDeleteBin6Line className='text-gold bottom-0 right-0' />
           </button>
+          {children}
     </div>
   );
 }

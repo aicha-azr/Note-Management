@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {fetchAllNotes, addNote,editNote}  from '@/app/redux/Slices/NoteThunk';
-import {fetchAllNotes, addNote, getNote}  from '@/app/redux/Slices/NoteThunk';
-
+import {fetchAllNotes, addNote,editNote, getNote}  from '@/app/redux/Slices/NoteThunk';
 interface Note {
   _id: string;
   title: string;
@@ -10,12 +8,14 @@ interface Note {
 
 interface NotesState {
   data: Note[];
+  note: Note[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: NotesState = {
   data: [],
+  note: [],
   loading: false,
   error: null,
 };
@@ -48,7 +48,6 @@ const notesSlice = createSlice({
       .addCase(addNote.fulfilled, (state, action) => {
         state.loading = false;
         state.data.push(action.payload); 
-        state.data.push(action.payload);
       })
       .addCase(addNote.rejected, (state, action) => {
         state.loading = false;
@@ -72,7 +71,7 @@ const notesSlice = createSlice({
       })
       .addCase(getNote.fulfilled, (state, action) => {
         state.loading = false;
-        state.data=action.payload; 
+        state.data = action.payload; 
       })
       .addCase(getNote.rejected, (state, action) => {
         state.loading = false;

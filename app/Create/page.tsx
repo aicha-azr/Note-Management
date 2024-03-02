@@ -6,6 +6,8 @@ import { useDispatch,useSelector } from "react-redux";
 import { AppDispatch } from "@/app/redux/Store/store";
 import { useEffect } from "react";
 import { fetchAllNotes, getNote } from "../redux/Slices/NoteThunk";
+import EditNote from "../ReusableComponent/editNote";
+import Link from "next/link";
 
 
 
@@ -32,15 +34,18 @@ export default function CreateNote(){
                 !data ? (
                     <div>No Notes Found</div>
                 ) : (
-                    data.map((item: any, index: number) => (
-                        <Card   
-                        key={index} 
-                        title={item.title} 
-                        body={item.description.substring(0, 120)+" ..."}
-                        createdAt={item.createdAt}
-                        className="min-h-[10rem]"
-                        onClick={()=>handleget(item._id)}
-                    ></Card>
+                
+                    data.map((item: any) => (
+                       <Link href="/edit"> 
+                       <Card 
+                            key={item._id} 
+                            title={item.title} 
+                            body={item.description.substring(0, 120)+" ..."}
+                            createdAt={item.createdAt}
+                            className="min-h-[10rem]"
+                            onClick={()=>handleget(item._id)}
+                        ><EditNote id={item._id} /></Card>
+                        </Link>
                     ))
                 )
             }
