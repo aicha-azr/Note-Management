@@ -7,13 +7,14 @@ import EditNote from "@/app/ReusableComponent/editNote";
 import { fetchAllNotes } from "@/app/redux/Slices/NoteThunk";
 import SideBar from "@/app/ReusableComponent/sidebar";
 import Card from "@/app/ReusableComponent/Card";
+import { useRouter } from "next/router";
 
 
 
-export default function CreateNote(){
+export default function EditNotes({params}:{params: {id: string}}){
     const dispatch = useDispatch<AppDispatch>();
-
-
+    const id  = params.id;
+    console.log(id);
     useEffect(() => {
         dispatch(fetchAllNotes());
       }, [dispatch]);
@@ -25,13 +26,13 @@ export default function CreateNote(){
         <SideBar/>
         <div className="flex w-full">
         <div className="w-[700px] shadow-md scroll overflow-auto p-2 gap-2 flex flex-col ">
-            {
+            {/**
                 !data ? (
                     <div>No Notes Found</div>
                 ) : (
-                    data.map((item: any, index: number) => (
+                    data.map((item: any) => (
                         <Card   
-                        key={index} 
+                        key={item._id} 
                         title={item.title} 
                         body={item.description.substring(0, 120)+" ..."}
                         createdAt={item.createdAt}
@@ -39,11 +40,11 @@ export default function CreateNote(){
                     ></Card>
                     ))
                 )
-            }
+                    */ }
             
         </div>
         
-        <EditNote className="w-full m-8"/>
+        {id && <EditNote id={id as string} className="w-full m-8" />}
         </div>
     </div>
     </>)
