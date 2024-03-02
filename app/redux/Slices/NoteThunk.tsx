@@ -38,7 +38,7 @@ export const fetchAllNotes = createAsyncThunk(
         try{
             const response = await axios.put(`http://localhost:3000/api/notes/${id}`, noteData);
             console.log(response);
-            return response.data;
+            return response.data;     
         }catch(e){
             return rejectWithValue('Failed to update the note')
         }
