@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from './cn/Cn';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
 interface CardProps {
   className?: string;
@@ -17,6 +18,9 @@ const Card: React.FC<CardProps> = ({ className, body, createdAt, title, onClick 
         <p className="text-blanc-casse text-sm mb-4">{body}</p>
         <p className="text-sm text-blanc-casse">{createdAt}</p>
       </div>
+        <button >
+            <RiDeleteBin6Line className='text-gold bottom-0 right-0' />
+          </button>
     </div>
   );
 }
