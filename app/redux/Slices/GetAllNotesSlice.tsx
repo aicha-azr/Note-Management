@@ -59,7 +59,11 @@ const notesSlice = createSlice({
       })
       .addCase(editNote.fulfilled, (state, action) => {
         state.loading = false;
-        state.data.push(action.payload);
+        const updatedNote = action.payload;
+        const index = state.data.findIndex((note) => note._id === updatedNote._id);
+        if (index !== -1) {
+          state.data[index] = updatedNote;
+        }
       })
       .addCase(editNote.rejected, (state, action) => {
         state.loading = false;
