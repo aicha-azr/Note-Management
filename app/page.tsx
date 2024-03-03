@@ -12,7 +12,7 @@ import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; // Number of items to display per page
+  const itemsPerPage = 9; // Number of items to display per page
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter(); 
 
@@ -56,7 +56,7 @@ export default function Home() {
                     id={item._id}
                     onClick={() => handleClick(item._id)}
                     createdAt={item.createdAt}
-                    body={item.description.substring(0, 100) + "..."}
+                    body={item.description.substring(0, 60) + "..."}
                     title={item.title}
                     className=""
                   />

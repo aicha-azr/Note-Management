@@ -34,12 +34,12 @@ export default function CreateNote() {
       <div className="h-screen flex bg-blanc-casse">
         <SideBar />
         <div className="flex w-full">
-          <div className="w-[500px] shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
+          <div className="w-[500px]  shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
             {Array.isArray(data) &&  data.length>0?  (
               data.map((item: any) => (
                   <Card
                     title={item.title}
-                    body={item.description.substring(0, 120) + " ..."}
+                    body={item.description.substring(0, 80) + " ..."}
                     createdAt={item.createdAt}
                     className="min-h-[10rem]"
                     onClick={() => {handleget(item._id); handleClick(item._id)}}
