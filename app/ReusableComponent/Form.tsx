@@ -24,7 +24,7 @@ const Form: React.FC<CardProps> = ({ className, children, ...rest }) =>{
   }
     return(
         <>
-        <form className={cn(className, "flex flex-col items-stretch shadow-md  shadow-orange-200 rounded-sm p-4 bg-blanc-casse text-white gap-[2rem]")} {...rest}>
+        <form className={cn(className, "flex flex-col items-stretch shadow-md  shadow-orange-200 p-4 bg-blanc-casse text-white gap-[2rem]")} {...rest}>
           <label className='text-burgendy font-bold text-lg  p-1'>Title:</label>
           <Title placeholder='Enter a title' className='shadow-md shadow-orange-200 ' onChange={(e)=>setTitle(e.target.value)}/>
 
