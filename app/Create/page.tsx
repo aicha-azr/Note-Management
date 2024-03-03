@@ -31,22 +31,22 @@ export default function CreateNote(){
         <div className="flex w-full">
         <div className="w-[700px] shadow-md scroll overflow-auto p-2 gap-2 flex flex-col ">
             {
-                !data ? (
-                    <div>No Notes Found</div>
-                ) : (
-                
+                Array.isArray(data) && data.length > 0? (
+                    
                     data.map((item: any) => (
-                       <Link href="/edit"> 
+                       
                        <Card 
-                            key={item._id} 
+                            id={item._id} 
                             title={item.title} 
                             body={item.description.substring(0, 120)+" ..."}
                             createdAt={item.createdAt}
                             className="min-h-[10rem]"
                             onClick={()=>handleget(item._id)}
-                        ><EditNote id={item._id} /></Card>
-                        </Link>
+                        />
+                        
                     ))
+                ) : (
+                    <div>No Notes Found</div>
                 )
             }
             
