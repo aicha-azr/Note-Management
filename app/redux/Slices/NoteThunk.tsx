@@ -56,4 +56,16 @@ export const fetchAllNotes = createAsyncThunk(
         }
     }
   );
+  export const deleteNote = createAsyncThunk(
+    'notes/deleteNote',
+    async(id: dataId, {rejectWithValue}) =>{
+      try{
+        const response = await axios.delete(`http://localhost:3000/api/notes/${id}`);
+        console.log(response.data)
+        return response.data;
+      }catch(e){
+        return rejectWithValue('Failed to delete the note')
+      }
+    }
+  )
   
