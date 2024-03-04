@@ -25,7 +25,6 @@ export default function EditNotes({params}:{params: {id: string}}){
 
       const handleClick = (_id: string) => {
         if (typeof _id === 'string') {
-          router.back();
           router.push(`/${_id}`);
         }
       }

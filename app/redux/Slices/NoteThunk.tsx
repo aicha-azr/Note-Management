@@ -5,7 +5,7 @@ export const fetchAllNotes = createAsyncThunk(
     'notes/fetchAll',
     async (_, { rejectWithValue }) => {
       try {
-        const response = await axios.get('http://localhost:3000/api/notes');
+        const response = await axios.get('/api/notes');
         console.log(response.data.note)
         return response.data.note;
 
@@ -22,7 +22,7 @@ export const fetchAllNotes = createAsyncThunk(
     'notes/addNote',
     async(noteData: NoteData, {rejectWithValue}) =>{
         try{
-            const response = await axios.post('http://localhost:3000/api/notes', noteData);
+            const response = await axios.post('/api/notes', noteData);
             console.log(response);
             return response.data;
         }catch(e){
@@ -36,7 +36,7 @@ export const fetchAllNotes = createAsyncThunk(
     'notes/editNote',
     async({ noteData, id }: { noteData: NoteData, id: string }, {rejectWithValue}) =>{
         try{
-            const response = await axios.put(`http://localhost:3000/api/notes/${id}`, noteData);
+            const response = await axios.put(`/api/notes/${id}`, noteData);
             console.log(response);
             return response.data;     
         }catch(e){
@@ -48,7 +48,7 @@ export const fetchAllNotes = createAsyncThunk(
     'notes/getoneNote',
     async(id:dataId, {rejectWithValue}) =>{
         try{
-            const response = await axios.get(`http://localhost:3000/api/notes/${id}`);
+            const response = await axios.get(`/api/notes/${id}`);
             console.log(response);
             return response.data.note;
         }catch(e){
@@ -60,7 +60,7 @@ export const fetchAllNotes = createAsyncThunk(
     'notes/deleteNote',
     async(id: dataId, {rejectWithValue}) =>{
       try{
-        const response = await axios.delete(`http://localhost:3000/api/notes/${id}`);
+        const response = await axios.delete(`/api/notes/${id}`);
         console.log(response.data)
         return response.data;
       }catch(e){
