@@ -36,7 +36,7 @@ const EditNote: React.FC<editNote> =  ({ id, className, children, ...rest }) => 
   function handleEdit(key: string){
       if(!title && !description) return;
     dispatch(editNote( {noteData: { title, description }, id}));
-  router.back();  }
+ }
     return (
       <>
         <form className={cn(className, "flex flex-col items-stretch shadow-md  shadow-orange-200 p-4 bg-blanc-casse gap-[2rem]")} {...rest}>
