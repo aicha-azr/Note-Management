@@ -58,7 +58,7 @@ export default function EditNotes({params}:{params: {id: string}}){
             ) }
           </div>
         
-        {id && <EditNote id={id as string} className="w-full m-8" />}
+        {id && <EditNote id={id as string} className="w-full m-8"/>}
         </div>
     </div>
     </>)
