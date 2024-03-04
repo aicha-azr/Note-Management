@@ -40,7 +40,7 @@ export default function EditNotes({params}:{params: {id: string}}){
         <SideBar/>
         <div className="flex w-full">
           <div className="w-[500px] text-burgendy font-bold shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
-          <h2>Recent Notes</h2>
+          <h2 className="text-2xl">Recent Notes</h2>
             {Array.isArray(data) &&  data.length>0?  (
               data.map((item: any) => (
                   <Card
