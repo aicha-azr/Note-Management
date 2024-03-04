@@ -9,12 +9,16 @@ import { fetchAllNotes, getNote } from "../redux/Slices/NoteThunk";
 import EditNote from "../ReusableComponent/editNote";
 import Link from "next/link";
 import { useRouter } from "next/navigation"; 
+import SingleNote from "../ReusableComponent/readNote";
 
 export default function CreateNote() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter(); 
 
- 
+  useEffect(() => {
+    dispatch(fetchAllNotes());
+  }, [dispatch]);
+
   const { data } = useSelector((state: any) => state.notes);
 
   function handleget(key: string) {
@@ -25,10 +29,6 @@ export default function CreateNote() {
       router.push(`Edit/${id}`);
     }
   };
-  
- useEffect(() => {
-    dispatch(fetchAllNotes());
-  }, [dispatch]);
 
   return (
     <>
@@ -51,8 +51,7 @@ export default function CreateNote() {
               <div>No Notes Found</div>
             ) }
           </div>
-                
-          <Form className="w-full m-8" />
+                <SingleNote/>
         </div>
       </div>
     </>

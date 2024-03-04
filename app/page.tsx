@@ -16,10 +16,6 @@ export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter(); 
 
-  useEffect(() => {
-    dispatch(fetchAllNotes());
-  }, [dispatch]);
-
   const { data } = useSelector((state: any) => state.notes);
 
   // Calculate current items based on pagination
@@ -41,11 +37,16 @@ export default function Home() {
     window.location.reload();
   }
   
+  useEffect(() => {
+    dispatch(fetchAllNotes());
+  }, [dispatch]);
+
   return (
     <>
       <div className="h-screen bg-blanc-casse flex gap-2">
         <SideBar />
         <div className="grid flex-col ">
+        <h1 className="text-3xl font-black uppercase text-burgendy font-mono text-center">All Notes</h1>
           <div className="bg-blanc-casse text-burgendy grid grid-cols-3 gap-2 h-fit justify-end mx-5">
             { !Array.isArray(data) || data.length === 0 ? ( 
               <div>No notes available</div>
@@ -60,8 +61,8 @@ export default function Home() {
                     title={item.title}
                     className=""
                   />
-                  <button onClick={() => handleDelete(item._id)} className=' bg-blanc-casse rounded-lg p-1 absolute top-[5px] right-[5px]'>
-                    <RiDeleteBin6Line className='text-pastell-red bottom-0 right-0' />
+                  <button onClick={() => handleDelete(item._id)} className=' p-1 absolute bottom-[5px] right-[5px]'>
+                    <RiDeleteBin6Line className='text-gold text-xl bottom-0 right-0' />
                   </button>
                 </div>
               ))

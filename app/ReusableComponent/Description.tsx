@@ -7,7 +7,7 @@ interface CardProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 
 const Description: React.FC<CardProps> = ({ className, children, ...rest }) => {
     return(        
-        <textarea className={cn(className, 'text-black p-3 bg-blanc-casse border-none max-h-[100%] h-fit w-full')} {...rest}/>          
+        <textarea className={cn(className, 'text-pastell-red text-sm p-3 bg-blanc-casse border-none max-h-[100%] h-fit w-full')} {...rest}/>          
     )
 }
 

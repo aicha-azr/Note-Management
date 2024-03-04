@@ -25,9 +25,6 @@ const Card: React.FC<CardProps> = ({  className, body, createdAt, title, onClick
         <p className="text-blanc-casse font-mono text-sm mb-4">{body}</p>
         <p className="text-sm text-blanc-casse">{createdAt}</p>
       </div>
-        <button >
-            <RiDeleteBin6Line className='text-gold bottom-0 right-0' />
-          </button>
           {children}
     </div>
   );

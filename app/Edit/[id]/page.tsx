@@ -17,20 +17,21 @@ export default function EditNotes({params}:{params: {id: string}}){
     const id  = params.id;
     const router = useRouter(); 
     
-    useEffect(() => {
-        dispatch(fetchAllNotes());
-      }, [dispatch]);
-
+   
       function handleget(key: string) {
         dispatch(getNote(key));
       }
       const { data} = useSelector((state: any) => state.notes);
 
-      const handleClick = (id: string) => {
-        if (typeof id === 'string') {
-          router.push(`Edit/${id}`);
+      const handleClick = (_id: string) => {
+        if (typeof _id === 'string') {
+          router.back();
+          router.push(`/${_id}`);
         }
       }
+      useEffect(() => {
+        dispatch(fetchAllNotes());
+      }, [dispatch]);
 
     return(<>
     <div className="h-screen flex bg-blanc-casse">
@@ -42,15 +43,15 @@ export default function EditNotes({params}:{params: {id: string}}){
                   <Card
                   key={item._id}
                     title={item.title}
-                    body={item.description.substring(0, 120) + " ..."}
+                    body={item.description.substring(0, 100) + " ..."}
                     createdAt={item.createdAt}
                     className="min-h-[10rem]"
-                    onClick={() => {handleget(item._id); handleClick(item._id)}}
+                    onClick={() => {handleClick(item._id); handleget(item._id)}}
                     id={item._id}
                   />
               ))
             ):(
-              <div>No Notes Found</div>
+              <div className="text-burgendy font-mono font-bold text-center">No Notes Found</div>
             ) }
           </div>
         

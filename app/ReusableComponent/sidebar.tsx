@@ -38,7 +38,7 @@ const SideBar: React.FC = () => {
                 </nav>
             </div>
 
-            <div className="flex flex-col items-center gap-y-4 pb-10">
+            <div className="flex flex-col items-center  pb-10">
                 <button className="mt-2 rounded-full bg-burgendy p-2">
                     <FaUser />
                 </button>
