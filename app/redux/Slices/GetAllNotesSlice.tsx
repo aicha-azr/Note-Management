@@ -75,7 +75,7 @@ const notesSlice = createSlice({
       })
       .addCase(getNote.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload; 
+        state.note = action.payload; 
       })
       .addCase(getNote.rejected, (state, action) => {
         state.loading = false;

@@ -30,7 +30,10 @@ export default function EditNotes({params}:{params: {id: string}}){
       }
       useEffect(() => {
         dispatch(fetchAllNotes());
-      }, [dispatch]);
+      }, []);
+
+
+      console.log(data)
 
     return(<>
     <div className="h-screen flex bg-blanc-casse">

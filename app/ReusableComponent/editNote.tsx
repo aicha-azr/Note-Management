@@ -19,18 +19,18 @@ interface editNote{
 
 const EditNote: React.FC<editNote> =  ({ id, className, children, ...rest }) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { data } = useSelector((state: any) => state.notes);
+  const { note } = useSelector((state: any) => state.notes);
   const router = useRouter();
   useEffect(() => {
     dispatch(getNote(id))
 
   }, [dispatch, id])
   useEffect(()=>{
-    if(data){
-      setTitle(data.title);
-      setDescription(data.description)
+    if(note){
+      setTitle(note.title);
+      setDescription(note.description)
     }
-  },[data])
+  },[note])
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   function handleEdit(key: string){
@@ -42,9 +42,9 @@ const EditNote: React.FC<editNote> =  ({ id, className, children, ...rest }) => 
         <form className={cn(className, "flex flex-col items-stretch shadow-md  shadow-orange-200 p-4 bg-blanc-casse gap-[2rem]")} {...rest}>
         <h1 className='text-pastell-red text-2xl font-bold'>Edit Note</h1>
           <label className='font-bold text-burgendy  text-lg p-1'>Title:</label>
-          {data && <Title placeholder='Enter a title' className='shadow-md shadow-orange-200 ' value={title} onChange={(e)=>setTitle(e.target.value)}/>}
+          {note && <Title placeholder='Enter a title' className='shadow-md shadow-orange-200 ' value={title} onChange={(e)=>setTitle(e.target.value)}/>}
           <label className='font-bold text-burgendy  text-lg  p-1'>Description:</label>
-          {data && <Description placeholder='Enter a description' className=' shadow-orange-200 shadow-md  min-h-[10rem]' value={description} onChange={(e)=>setDescription(e.target.value)}/>}
+          {note && <Description placeholder='Enter a description' className=' shadow-orange-200 shadow-md  min-h-[10rem]' value={description} onChange={(e)=>setDescription(e.target.value)}/>}
           <Button className=' text-1xl e p-2' onClick={()=>{handleEdit(id)}} >Update note</Button>
         </form>
         </>
