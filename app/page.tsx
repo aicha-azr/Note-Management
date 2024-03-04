@@ -6,9 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch } from "@/app/redux/Store/store";
 import { useRouter } from "next/navigation"; 
 import { useEffect, useState } from "react";
+import Head from 'next/head'
 import { deleteNote, fetchAllNotes } from "./redux/Slices/NoteThunk";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import favicon from './assets/favicon.ico'
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,6 +45,10 @@ export default function Home() {
 
   return (
     <>
+    <Head>
+        <title>Noted</title>
+        <link rel="icon" href="./assets/favicon.ico" sizes="any" />
+      </Head>
       <div className="h-screen bg-blanc-casse flex gap-2">
         <SideBar />
         <div className="grid flex-col ">

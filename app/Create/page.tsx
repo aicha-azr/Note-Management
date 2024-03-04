@@ -37,7 +37,7 @@ export default function CreateNote() {
         <div className="flex w-full">
           <div className="w-[500px]  shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
             {Array.isArray(data) &&  data.length>0?  (
-              data.map((item: any) => (
+              data.slice().reverse().map((item: any) => (
                   <Card
                     title={item.title}
                     body={item.description.substring(0, 80) + " ..."}

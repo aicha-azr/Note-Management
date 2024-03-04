@@ -25,7 +25,7 @@ export default function EditNotes({params}:{params: {id: string}}){
 
       const handleClick = (_id: string) => {
         if (typeof _id === 'string') {
-          router.push(`/${_id}`);
+          router.push(`Edit/${_id}`);
         }
       }
       useEffect(() => {
@@ -42,7 +42,7 @@ export default function EditNotes({params}:{params: {id: string}}){
           <div className="w-[500px] text-burgendy font-bold shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
           <h2 className="text-2xl">Recent Notes</h2>
             {Array.isArray(data) &&  data.length>0?  (
-              data.map((item: any) => (
+              data.slice().reverse().map((item: any) => (
                   <Card
                   key={item._id}
                     title={item.title}
