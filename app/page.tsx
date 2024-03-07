@@ -49,13 +49,13 @@ export default function Home() {
         <title>Noted</title>
         <link rel="icon" href="./assets/favicon.ico" sizes="any" />
       </Head>
-      <div className="h-screen bg-blanc-casse flex gap-2">
+      <div className="min-h-screen flex bg-blanc-casse">
         <SideBar />
-        <div className="grid flex-col ">
-        <h1 className="text-3xl font-black uppercase text-burgendy font-mono text-center">All Notes</h1>
-          <div className="bg-blanc-casse text-burgendy grid grid-cols-3 gap-2 h-fit justify-end mx-5">
-            { !Array.isArray(data) || data.length === 0 ? ( 
-              <div>No notes available</div>
+        <div className="flex-1 flex flex-col items-center p-5">
+          <h1 className="text-3xl font-black uppercase text-burgendy font-mono text-center mb-4">All Notes</h1>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center">
+            {!Array.isArray(data) || data.length === 0 ? ( 
+              <div className="text-center">No notes available</div>
             ) : (
               currentItems.map((item: any) => (
                 <div className='relative' key={item._id}>
@@ -67,14 +67,14 @@ export default function Home() {
                     title={item.title}
                     className=""
                   />
-                  <button onClick={() => handleDelete(item._id)} className=' p-1 absolute bottom-[5px] right-[5px]'>
-                    <RiDeleteBin6Line className='text-gold text-xl bottom-0 right-0' />
+                  <button onClick={() => handleDelete(item._id)} className='p-1 absolute bottom-0 right-0'>
+                    <RiDeleteBin6Line className='text-gold text-xl' />
                   </button>
                 </div>
               ))
             )}
           </div>
-          <div className="mt-8 text-center font-bold grid-row-5 ">
+          <div className="mt-8 text-center font-bold">
             <button
               className="text-burgendy px-4 py-2 rounded-md mr-2"
               onClick={() => handlePageChange(currentPage - 1)}
