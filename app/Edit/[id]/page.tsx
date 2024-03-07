@@ -23,11 +23,12 @@ export default function EditNotes({params}:{params: {id: string}}){
       }
       const { data} = useSelector((state: any) => state.notes);
 
-      const handleClick = (_id: string) => {
-        if (typeof _id === 'string') {
-          router.push(`Edit/${_id}`);
+      const handleClick = (id: string) => {
+        if (typeof id === 'string' && router) {
+            router.replace(`/Edit/${id}`);
         }
-      }
+    };
+      
       useEffect(() => {
         dispatch(fetchAllNotes());
       }, []);
@@ -44,16 +45,18 @@ export default function EditNotes({params}:{params: {id: string}}){
             <div className="w-[500px]  shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
               <h2 className="text-burgendy text-xl font-bold">Recent Notes</h2>
               {Array.isArray(data) &&  data.length > 0 ? (
-                data.slice().reverse().map((item: any) => (
-                  <Card
-                    key={item._id}
-                    title={item.title}
-                    body={item.description.substring(0, 80) + " ..."}
-                    createdAt={item.createdAt}
-                    className="min-h-[10rem]"
-                    onClick={() => {handleget(item._id); handleClick(item._id)}}
-                    id={item._id}
-                  />
+                data.slice().reverse().map((item: any) => (<Card
+                  key={item._id}
+                  title={item.title}
+                  body={item.description.substring(0, 80) + " ..."}
+                  createdAt={item.createdAt}
+                  className="min-h-[10rem]"
+                  onClick={() => {
+                    handleget(item._id);
+                    handleClick(item._id); // Ensure that handleClick is called properly
+                  }}
+                  id={item._id}
+                />
                 ))
               ) : (
                 <div>No Notes Found</div>
@@ -79,8 +82,10 @@ export function useWindowSize() {
       });
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
   return windowSize;
