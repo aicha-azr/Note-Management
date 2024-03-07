@@ -6,15 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/app/redux/Store/store";
 import { useEffect, useState } from "react";
 import { fetchAllNotes, getNote } from "../redux/Slices/NoteThunk";
-import EditNote from "../ReusableComponent/editNote";
-import Link from "next/link";
 import { useRouter } from "next/navigation"; 
 
 export default function CreateNote() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter(); 
 
- 
   const { data } = useSelector((state: any) => state.notes);
 
   function handleget(key: string) {
@@ -26,43 +23,44 @@ export default function CreateNote() {
     }
   };
   
- useEffect(() => {
+  useEffect(() => {
     dispatch(fetchAllNotes());
   }, [dispatch]);
 
-  
   // Determine if it's a mobile device
-  const isMobile = useWindowSize().width < 640;
+  const isMobile = useWindowSize()?.width < 640;
 
   return (
     <>
       <div className="h-screen flex bg-blanc-casse">
         <SideBar/>
         <div className="flex w-full">
-        {!isMobile && <div className="w-[500px]  shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
-            {Array.isArray(data) &&  data.length > 0 ? (
-              data.slice().reverse().map((item: any) => (
-                <Card
-                  key={item._id}
-                  title={item.title}
-                  body={item.description.substring(0, 80) + " ..."}
-                  createdAt={item.createdAt}
-                  className="min-h-[10rem]"
-                  onClick={() => {handleget(item._id); handleClick(item._id)}}
-                  id={item._id}
-                />
-              ))
-            ) : (
-              <div>No Notes Found</div>
-            )}
-          </div>} 
-          
+          {!isMobile && (
+            <div className="w-[500px]  shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
+              {Array.isArray(data) &&  data.length > 0 ? (
+                data.slice().reverse().map((item: any) => (
+                  <Card
+                    key={item._id}
+                    title={item.title}
+                    body={item.description.substring(0, 80) + " ..."}
+                    createdAt={item.createdAt}
+                    className="min-h-[10rem]"
+                    onClick={() => {handleget(item._id); handleClick(item._id)}}
+                    id={item._id}
+                  />
+                ))
+              ) : (
+                <div>No Notes Found</div>
+              )}
+            </div>
+          )}
           <Form className="w-full m-8" />
         </div>
       </div>
     </>
   );
 }
+
 export function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
