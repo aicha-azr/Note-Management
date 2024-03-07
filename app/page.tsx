@@ -14,7 +14,7 @@ import favicon from './assets/favicon.ico'
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9; // Number of items to display per page
+  const itemsPerPage =8; // Number of items to display per page
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter(); 
 

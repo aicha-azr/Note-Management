@@ -4,7 +4,7 @@ import Form from "../ReusableComponent/Form";
 import SideBar from "../ReusableComponent/sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/app/redux/Store/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchAllNotes, getNote } from "../redux/Slices/NoteThunk";
 import EditNote from "../ReusableComponent/editNote";
 import Link from "next/link";
@@ -30,31 +30,56 @@ export default function CreateNote() {
     dispatch(fetchAllNotes());
   }, [dispatch]);
 
+  
+  // Determine if it's a mobile device
+  const isMobile = useWindowSize().width < 640;
+
   return (
     <>
       <div className="h-screen flex bg-blanc-casse">
-        <SideBar />
+        <SideBar/>
         <div className="flex w-full">
-          <div className="w-[500px]  shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
-            {Array.isArray(data) &&  data.length>0?  (
+        {!isMobile && <div className="w-[500px]  shadow-md overflow-auto scrollbar-thin scrollbar-thumb-pastell-red scrollbar-track-blanc-casse  p-2 gap-2 flex flex-col">
+            {Array.isArray(data) &&  data.length > 0 ? (
               data.slice().reverse().map((item: any) => (
-                  <Card
-                    title={item.title}
-                    body={item.description.substring(0, 80) + " ..."}
-                    createdAt={item.createdAt}
-                    className="min-h-[10rem]"
-                    onClick={() => {handleget(item._id); handleClick(item._id)}}
-                    id={item._id}
-                  />
+                <Card
+                  key={item._id}
+                  title={item.title}
+                  body={item.description.substring(0, 80) + " ..."}
+                  createdAt={item.createdAt}
+                  className="min-h-[10rem]"
+                  onClick={() => {handleget(item._id); handleClick(item._id)}}
+                  id={item._id}
+                />
               ))
-            ):(
+            ) : (
               <div>No Notes Found</div>
-            ) }
-          </div>
-                
+            )}
+          </div>} 
+          
           <Form className="w-full m-8" />
         </div>
       </div>
     </>
   );
+}
+export function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 0,
+    height: typeof window !== 'undefined' ? window.innerHeight : 0,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowSize;
 }
